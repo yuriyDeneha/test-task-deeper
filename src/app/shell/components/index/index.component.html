@@ -1,0 +1,104 @@
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+    <div class="wrapper px-4 py-10 min-h-screen bg-white max-h-screen overflow-y-auto">
+        <div class="border-b-2 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div class="flex-1">
+                    <div class="text-lg font-bold text-center text-gray-700 leading-tight">Angular Task</div>
+                </div>
+            </div>
+        </div>
+        <div class="py-10">
+            <div>
+                <div class="mb-5">
+                    <label for="password" class="font-bold mb-1 text-gray-700 block">Requirements & Solutions</label>
+                    <div class="text-gray-600 mt-2 mb-4">
+                        Create an angular app to render the data coming from a backend endpoint in a tree view with
+                        search.
+                        <ul class="list-decimal text-sm ml-4 mt-2">
+                            <li>Make a tree view that renders the data provided from the Backend
+                                <ul class="list-disc text-sm ml-4 mt-2">
+                                    <li>make each level of the tree collapsible</li>
+                                </ul>
+                            </li>
+
+                            <div class="bg-gray-200 p-2 rounded-lg">
+                                <deeper-tree [items]="filteredItems">
+                                    <ng-template let-item>
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <span>
+                                                {{ item.name }}
+                                            </span>
+                                            <div class="flex justify-end">
+                                                <button
+                                                    class="bg-gray-300 hover:bg-gray-200 p-1 w-4 rounded inline-flex items-center"
+                                                    (click)="toggle(item)" *ngIf="item.children?.length>0">
+                                                    {{ item.expanded ? "-" : "+" }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </deeper-tree>
+                            </div>
+                            <li>Enable search for the view
+                                <ul class="list-disc text-sm ml-4 mt-2">
+                                    <li>the search should be case insensitive</li>
+                                    <li>the result should still be a tree view showing the whole path to the found
+                                        result
+                                    </li>
+                                </ul>
+                            </li>
+                            <div class="bg-gray-200 p-2 rounded-lg">
+                                <form [formGroup]="form">
+                                    <input
+                                        class="w-3x1 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline mr-2 text-gray-600 font-medium"
+                                        formControlName="searchInput" placeholder="Enter...">
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-3 mr-2 rounded"
+                                        (click)="toggleAll(toggleTypes.expandAll)">
+                                        Expand all
+                                    </button>
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-3 mr rounded"
+                                        (click)="toggleAll(toggleTypes.collapseAll)">
+                                        Collapse all
+                                    </button>
+                                </form>
+                            </div>
+                            <li>You also should use the following:
+                                <ul class="list-disc text-sm ml-4 mt-2">
+                                    <li>tailwindCss to style components</li>
+                                    <div class="bg-gray-200 p-2 rounded-lg">
+                                        This project uses only 3 css code style properties
+                                        <code>
+                                        <p>
+                                            <span class="text-blue-500">background</span>: <span class="text-pink-600">linear-gradient(45deg, rgb(176, 255, 2) 0%, rgb(255, 0, 90) 100%);</span>
+                                        </p>
+                                        <p>
+                                            <span class="text-blue-500">height</span>: <span class="text-pink-600">100vh;</span>                      
+                                        </p>
+                                        <p>
+                                            <span class="text-blue-500">font-family</span>: <span class="text-pink-600">ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";</span>  
+                                        </p>
+                                    </code>
+                                    </div>
+                                    <li>state management (NgRx - component store)</li>
+                                    <div class="bg-gray-200 p-2 rounded-lg">
+                                        All array actions go through ngRx
+                                    </div>
+                                    <li>angular reactive forms</li>
+                                    <div class="bg-gray-200 p-2 rounded-lg">
+                                        Search works through the form
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="h-2 rounded-full bg-gray-300"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center justify-center">
+        <h1 class="text-9xl font-extrabold text-white">Go Deeper with Deeper Signals</h1>
+    </div>
+</div>
